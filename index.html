@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Tracker</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style type="text/css">
+        html{
+            scroll-behavior:smooth;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #181717 0%, rgb(2, 75, 112) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .scrollbar::-webkit-scrollbar{
+            width: 0px;
+        }
+        #thumb-container::-webkit-scrollbar {
+            display: none;
+        }
+        .hi::-webkit-scrollbar{
+            background: linear-gradient(135deg, #181717 0%, rgb(2, 75, 112) 100%);
+            width:5px;
+        }
+        .hi::-webkit-scrollbar-thumb{
+            background-color: #d7e5fc
+        }
+    </style>
+</head>
+<body class="overflow-y-auto hi">
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-[url('https://images.pexels.com/photos/6380624/pexels-photo-6380624.jpeg')] bg-cover bg-center h-screen" >
+        <nav class="mx-auto flex justify-between py-3 ">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-sky-200 rounded-xl flex items-center justify-center shadow-lg shadow-sky-500/20 group-hover:rotate-12 transition-transform ml-9 mr-3">
+                        <i class="fa-regular fa-compass text-xl text-gray-800"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tighter uppercase font-display text-gray-900">Beyond <span class="text-sky-200">Travels</span></span>
+                </div>
+                <ul class="space-x-12 flex justify-center items-center rounded-3xl w-[40%] py-3 mr-[48px]">
+                    <li><a href="#home" class="text-sky-200 hover:text-white text-[17px] flex items-center mr-6"><i class="fa-solid fa-house text-[17px] mr-2"></i><p>Home</p></a></li>
+                    <li><a href="#about" class="text-sky-200 hover:text-white text-[17px]">About</a></li>
+                    <li><a href="#services" class="text-sky-200 hover:text-white text-[17px]">Services</a></li>
+                    <li><a href="#contact" class="text-sky-200 hover:text-white text-[17px]">Contact</a></li>
+                    <li><a href="#signin" class="text-sky-200 hover:text-white text-[17px] flex items-center"><i class="fa-solid fa-circle-user text-[17px] mr-2"></i><p>Sign In</p></a></i></a></li>
+                </ul>
+        </nav>
+        
+        <div class="flex flex-col ">
+            <div class="flex flex-col  w-[70%] ml-9"> 
+                <h1 class="text-8xl  font-extrabold leading-[1] text-gradient uppercase mb-4 ">
+                    Track Your <br/> Wanderlust
+                </h1>
+                <p class=" mb-7 text-gray-800 w-[560px]  text-[17px]">Unlock the world with Beyond Travel, your ultimate digital compass for seamless exploration. We bridge the gap between imagination and reality by providing high-definition visuals, precise geospatial insights, and the hidden narratives behind every landmark.</p>
+                <div>
+                    <button class="backdrop-blur-[12px] shadow-[0_2px_0px_0px_rgba(31,41,55)] text-gray-800 font-semibold bg-[rgba(255, 255, 255, 0.1)] pt-3 pb-4 px-12 rounded-3xl text-[17px] flex items-center btn "><a href="#services">Explore Places</a></button>
+                </div>
+            </div> 
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+       <div class="h-[90%] w-[100%] flex items-center justify-center pt-3 px-3">
+        <div class="w-[95%] h-[400px] bg-[#d7e5fc] p-3 flex rounded-t-xl border-dashed border-x-2 border-t-2 border-gray-400">
+            <img src="./Images/5.jpg" class="h-[375px] w-[450px] rounded-xl">
+            <div class="flex flex-col ml-8">
+                <h1 class="text-4xl font-extrabold text-slate-600 mb-2">Knowing ABOUT US</h1>
+                <p class="text-blue-600 mb-8">Learn more about our mission and values.</p>
+                <p class="mb-8 text-gray-700">Welcome to your ultimate trip planning companion, designed to transform your travel dreams into detailed, exciting itineraries. We take the guesswork out of discovery by providing a rich, single source for all your needs. Explore stunning, high-resolution pictures that capture the essence of each location, get precise map data and essential travel details, and always stay prepared with real-time weather updates. Our expertly crafted descriptions offer historical context and insider tips, ensuring you have a complete understanding of the places you'll visit.</p>
+                <p class=" italic mb-2 text-gray-700">Stop wondering and start exploring with confidence—your perfect itinerary begins right here.</p>
+                <div class="flex items-center">
+                    <p class=" italic text-gray-700 mr-2">Rating:</p>
+                    <img src="./Images/7.png" class="h-[25px] w-[90px]">
+                </div>    
+            </div>
+        </div>
+       </div>
+       
+       <div class="flex flex-col items-center bg-gray-900 h-[330px] pt-5">
+            <h1 class="text-2xl font-bold text-sky-300 mb-4">What Our Users Say</h1>
+            <div class="flex">
+                <div class="glass-card p-8 rounded-3xl flex flex-col justify-center scroll-reveal">
+                    <div>
+                        <div class="flex gap-1 mb-4 star-rating">
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-200 text-md italic mb-8 leading-relaxed">
+                            "Beyond Travels turned my dream of seeing the Northern Lights into a reality. The attention to detail in the itinerary was simply impeccable. Best trip of my life!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/150?u=sarah" alt="Sarah J." class="w-14 h-14 rounded-full border-2 border-sky-400" onerror="this.src='https://via.placeholder.com/150'">
+                        <div>
+                            <h4 class="font-bold text-white">Sarah Jenkins</h4>
+                            <p class="text-sky-400 text-sm">Explored Iceland</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-3xl flex flex-col justify-center scroll-reveal">
+                    <div>
+                        <div class="flex gap-1 mb-4 star-rating">
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star-half-alt text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-200 text-md italic mb-8 leading-relaxed">
+                            "The booking process was seamless. I appreciated the curated local insights that you just can't find on standard travel blogs. Highly recommended for solo travelers!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/150?u=marc" alt="Marc L." class="w-14 h-14 rounded-full border-2 border-sky-400" onerror="this.src='https://via.placeholder.com/150'">
+                        <div>
+                            <h4 class="font-bold text-white">Marc Laurent</h4>
+                            <p class="text-sky-400 text-sm">Explored Kyoto</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-3xl flex flex-col justify-center scroll-reveal">
+                    <div>
+                        <div class="flex gap-1 mb-4 star-rating">
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-200 text-md italic mb-8 leading-relaxed">
+                            "Exceptional customer support. We had a flight delay and the Beyond Travels team handled everything—rebooking our transfers before we even landed. Stress-free travel!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/150?u=elena" alt="Elena V." class="w-14 h-14 rounded-full border-2 border-sky-400" onerror="this.src='https://via.placeholder.com/150'">
+                        <div>
+                            <h4 class="font-bold text-white">Elena Vasquez</h4>
+                            <p class="text-sky-400 text-sm">Explored Santorini</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div>
+            <h1 class="text-4xl font-extrabold text-slate-600 mb-2 text-center mt-10">Our SERVICES</h1>
+            <p class="text-blue-600  text-center">Discover the places your heart desires to visit and know about them.</p>
+        </div>
+        <h2 class="text-[22px] font-bold text-gray-600 pl-9 my-5">TOP Destinations in India</h2>
+        <div class="flex items-center justify-evenly px-4">
+                    <div class="flex flex-col items-center justify-evenly overflow-hidden gap-2 rounded-lg text-gray-800 shadow-[0_3px_5px_black] h-[350px] w-[330px] relative">
+                        <div class="absolute top-4 right-4 backdrop-blur-[12px] bg-gray-600 bg-opacity-50 text-white px-3 py-1 rounded-full text-[10px] font-bold">5.0 ★</div>
+                        <img src="./Images/taj mahal.jpg" class="h-[350px] w-[330px] object-cover hover:scale-110 transition-transform duration-700">
+                        <div class="upper absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 ">
+                            <h3 class="text-xl font-bold text-white ">Taj Mahal</h3>
+                            <p class="text-gray-300">A UNESCO World Heritage site and one of the most famous monuments in the world.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-evenly overflow-hidden gap-2 ml-3 rounded-lg text-gray-800 shadow-[0_3px_5px_black] h-[350px] w-[330px] relative">
+                        <div class="absolute top-4 right-4 backdrop-blur-[12px] bg-gray-600 bg-opacity-50 text-white px-3 py-1 rounded-full text-[10px] font-bold">4.8 ★</div>
+                        <img src="./Images/jaipur.jpg" class="h-[350px] w-[330px] object-cover hover:scale-110 transition-transform duration-700">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-xl font-bold text-white">Jaipur</h3>
+                            <p class="text-gray-300">The capital of Rajasthan, known for its stunning palaces and forts.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-evenly overflow-hidden gap-2 ml-3 rounded-lg text-gray-800 shadow-[0_3px_5px_black] h-[350px] w-[330px] relative">
+                        <div class="absolute top-4 right-4 backdrop-blur-[12px] bg-gray-600 bg-opacity-50 text-white px-3 py-1 rounded-full text-[10px] font-bold">5.0 ★</div>
+                        <img src="./Images/kerela.jpg" class="h-[350px] w-[330px] object-cover hover:scale-110 transition-transform duration-700">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-xl font-bold text-white">Kerala</h3>
+                            <p class="text-gray-300">Known for its backwaters, beaches, and rich cultural heritage.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-evenly overflow-hidden gap-2 ml-3 rounded-lg text-gray-800 shadow-[0_3px_5px_black] h-[350px] w-[330px] relative">
+                        <div class="absolute top-4 right-4 backdrop-blur-[12px] bg-gray-600 bg-opacity-50 text-white px-3 py-1 rounded-full text-[10px] font-bold">4.5 ★</div>
+                        <img src="./Images/ladhak.jpg" class="h-[350px] w-[330px] object-cover hover:scale-110 transition-transform duration-700">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-xl font-bold text-white">Ladhak</h3>
+                            <p class="text-gray-300">A beautiful region in Ladakh, known for its stunning landscapes and rich cultural heritage.</p>
+                        </div>
+                    </div>
+        </div>
+        <div class="flex flex-col items-center justify-evenly mt-8">
+            <h2 class="text-[22px] font-bold text-gray-600 mb-5">Explore More Places</h2>
+            <div class="flex flex-wrap gap-4">
+                <div class="glass p-1.5 rounded-2xl flex items-center shadow-lg bg-gray-50">
+                    <div class="flex items-center justify-start w-[450px] py-4">
+                        <i class="fa-solid fa-magnifying-glass text-sky-400 mx-2"></i>
+                        <input type="text" placeholder="Search for a place..." class="bg-transparent border-none  text-sm w-48 placeholder-gray-500 focus: border-0 focus:outline-none " id="askplace">
+                    </div>
+                    <button id="submitplace" class="bg-sky-500 hover:bg-sky-600 text-white font-bold px-6 pb-3 pt-2 rounded-xl transition-all shadow-lg shadow-sky-500/20" onclick="showThis()">
+                            Analyze Spot
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="reviewModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 items-center justify-center p-4 hidden">
+            <div class="bg-gray-900 w-[80%]  rounded-3xl p-8 border border-gray-800 my-3 overflow-y-auto h-[95%] flex flex-col scrollbar">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-white">DELHI</h3>
+                    <button onclick="closeThis()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+                </div>
+                <div class="flex flex-grow mb-5">
+                    <div class="flex flex-col mr-[120px] w-[400px]">
+                        <div id="apiImageContainer" class="h-[500px] w-[500px] rounded-[20px] overflow-hidden mb-4 shadow-2xl relative">
+                            <img id="main-image-display" src="" class="w-full h-full object-cover transition-opacity duration-300 opacity-0" alt="Destination">
+                            <div id="image-loader" class="absolute inset-0 flex items-center justify-center bg-gray-800">
+                                <i class="fas fa-spinner fa-spin text-3xl text-indigo-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="w-[500px] mt-2">
+                            <h5 class="text-sm font-semibold text-gray-400 mb-2 px-1">More Images</h5>
+                            <div id="thumb-container" class="flex gap-3 overflow-x-auto pb-3 px-1 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-gray-800 h-[100px] w-[500px]"></div>
+                        </div>
+
+                    </div>
+                    <div class="bg-gray-800/40 p-5 rounded-2xl border border-gray-800 w-[580px]">
+                            <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                                <i class="fas fa-info-circle text-indigo-400"></i> Tourist Attractions
+                            </h4>
+                            <div id="text1" class="text-gray-300 leading-relaxed text-sm md:text-base"></div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="bg-gray-800/40 p-5 rounded-2xl border border-gray-800 w-[510px] mr-6">
+                        <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-cloud-sun text-orange-400"></i> Current Weather
+                        </h4>
+                        <div id="weatherinfo" class="text-gray-300"></div>
+                    </div>
+
+                    <div class="bg-gray-800/40 p-5 rounded-2xl border border-gray-800 w-[580px]">
+                        <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt text-red-500"></i> Geographic Location
+                        </h4>
+                        <div id="locationinfo" class="text-gray-300 text-sm mb-4"></div>
+                                
+                        <div id="map" class="h-[170px] w-full rounded-xl border border-gray-700 shadow-inner z-10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-[#d7e5fc] mt-7">
+        <div class="pt-4 mb-5">
+            <h1 class="text-4xl font-extrabold text-slate-600 mb-2 text-center">Contact US</h1>
+            <p class="text-blue-700  text-center">Have questions or need assistance? Reach out to us!</p>
+        </div>
+        <div class="h-[500px] flex justify-evenly items-center">
+            <div class="h-[430px] w-[500px] pl-5 pt-4 ">
+                <div class="mb-8">
+                    <p class="text-blue-700 font-semibold tracking-widest uppercase text-lg">Beyond Travels</p>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-2 leading-tight text-gray-700 mb-6">Let's Map Your Next Adventure</h2>
+                    <p class="text-gray-700">Feel free to reach out to us with any inquiries or to plan your next trip! We will make sure to provide you with the best travel experience. We will try reaching out to you as soon as possible.</p>
+                </div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-phone text-blue-700 mr-3"></i>
+                    <span class="text-gray-700">+91 12345 67890</span>
+                </div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-envelope text-blue-700 mr-3"></i>
+                    <span class="text-gray-700">info@beyondtravels.com</span>
+                </div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-location-dot text-blue-700 mr-3"></i>
+                    <span class="text-gray-700">123 Travel Street, New Delhi City, India</span>
+                </div>
+            </div>
+            <div class="h-[430px] w-[560px]">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="723d0040-0a97-42aa-897f-2d0367ec04c9">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                        <input type="text" id="name" class="border border-gray-300 rounded-lg px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 w-[400px]" name="name" placeholder="Enter your Name" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                        <input type="email" id="email" class="border border-gray-300 rounded-lg px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 w-[400px]" name="email" placeholder="Enter your Email" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                        <textarea id="message" rows="4" class="border border-gray-300 rounded-lg px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 w-[400px]" name="message" placeholder="Enter your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration=300">Send Message</button>
+                </form>
+            </div>
+        </div>      
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="py-12 border-y border-white/5 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="text-4xl font-bold font-display text-sky-400">1.2M+</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">Spots Indexed</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold font-display text-sky-400">24/7</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">Live Tracking</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold font-display text-sky-400">850+</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">Customers Accessed</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold font-display text-sky-400">190+</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500 font-bold mt-2">Countries</div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">Beyond Travels</h3>
+                    <p class="text-gray-400">Explore the world with us!</p>
+                </div>
+                <div class="mb-4 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-2">Quick Links</h4>
+                    <ul class="text-gray-400">
+                        <li><a href="#home" class="hover:text-white">Home</a></li>
+                        <li><a href="#about" class="hover:text-white">About Us</a></li>
+                        <li><a href="#services" class="hover:text-white">Services</a></li>
+                        <li><a href="#contact" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 mt-6 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 Beyond Travels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</ht
